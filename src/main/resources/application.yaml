@@ -1,0 +1,53 @@
+server:
+  port: 8100
+  servlet:
+    context-path: /3cad
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  datasource:
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    url: jdbc:sqlserver://192.168.1.10:1433;database=Ecadmaster
+    username: ecadpro
+    password: server
+#  second-datasource:
+#    driver-class-name: com.mysql.jdbc.Driver
+#    jdbc-url: jdbc:mysql://92.53.96.236:3306/cl279370_admpnl
+#    useSSL: true
+#    username: cl279370_admpnl
+#    password: GzBR8Ke1
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.SQLServer2012Dialect
+        id:
+          new_generator_mappings: false
+  h2:
+    console:
+      enabled: true
+      settings:
+        web-allow-others: false
+  mail:
+    protocol: smtp
+    smtp:
+      host: smtp.timeweb.ru
+      port: 25
+    username: 3cad@dedal-service.ru
+    password: 3CADsupport
+logging:
+  file:
+    name: log/log.log
+  logback:
+    rollingpolicy:
+      max-file-size: 500KB
+      total-size-cap: 5MB
+    triggeringPolicy:
+      maxFileSize: 2MB
+  level:
+    org.springframework: WARN
+    ru.toroschin: INFO
+    org.hibernate: ERROR
+    com.zaxxer.hikari: WARN
+    com.microsoft.sqlserver: ERROR
+    org.hibernate.engine.jdbc.spi.SqlExceptionHelper: ERROR
